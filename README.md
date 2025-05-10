@@ -1,132 +1,82 @@
-# dima-date - Persian (Jalali) Date Plugin for WordPress 🌟
+# dima-date - تاریخ شمسی برای وردپرس ⏳
 
-> ⏳ Convert all dates in WordPress to Jalali (Solar Hijri) calendar with full admin settings and PHP 8+ support.
+> ⏳ تبدیل تمام تاریخ‌ها در وردپرس به تاریخ شمسی (جلالی) با قابلیت تنظیم قالب در ادمین. ساخته شده با PHP 8+.
 
-[![License](https://img.shields.io/badge/license-GPL--2.0-blue)](https://github.com/yourusername/dima-date/blob/main/LICENSE)
+[![License](https://img.shields.io/badge/license-GPL--2.0-blue)](https://github.com/balvardi/dima-date/blob/main/LICENSE)
 
-A lightweight, modern, and fully customizable **Persian date plugin for WordPress**, built with PHP 8+ features like enums, union types, and named arguments. This plugin converts all visible dates on both frontend and backend to the Jalali (Shamsi) calendar without relying on server-side extensions like `jdate()`.
-
----
-
-## 📌 Features
-
-- ✅ Converts all dates shown in WordPress (posts, comments, edit screens, etc.) to Jalali.
-- ✅ Admin settings page to customize date format (`l، j F Y`, `Y/m/d`, etc.)
-- ✅ REST API support – dates returned by `/wp-json/wp/v2/posts` are also converted.
-- ✅ No need for `jdatetime` or `jdate()` PHP extension – uses an internal library.
-- ✅ Built with modern PHP 8+ syntax.
-- ✅ RTL & Persian-ready UI.
+**dima-date** یک پلاگین سبک، قدرتمند و کاملاً قابل تنظیم برای **وردپرس** است که تمام تاریخ‌های نمایشی را در هسته وردپرس (Frontend و Admin) به **تقویم شمسی (جلالی)** تبدیل می‌کند.
 
 ---
 
-## 📁 Folder Structure
+## 🔖 ویژگی‌ها
 
-```
-dima-date/
-├── dima-date.php        ← Main plugin file
-├── admin/
-│   └── settings.php     ← Admin settings page
-└── vendor/
-    ├── jdf.php          ← Wrapper for jdate() function
-    └── jdf-lib.php      ← Jalali date conversion library
-```
+✅ تبدیل تمام تاریخ‌ها به شمسی  
+✅ صفحه تنظیمات در بخش ادمین وردپرس  
+✅ پشتیبانی از قالب‌های مختلف (`Y/m/d`, `l، j F Y H:i` و غیره)  
+✅ REST API Support – `/wp-json/wp/v2/posts`  
+✅ بدون نیاز به `jdate()` یا افزونه سروری  
+✅ سازگار با PHP 8.0+
 
 ---
 
-## 🛠 Requirements
+## 👤 توسعه‌دهنده
 
-- WordPress 5.0+
-- PHP 8.0+
-- No external libraries or extensions needed.
-
----
-
-## 📦 Installation
-
-### Manual Installation
-
-1. Download the latest release from GitHub.
-2. Upload the `dima-date` folder to the `wp-content/plugins/` directory.
-3. Go to **Plugins > Installed Plugins** in your WordPress dashboard.
-4. Activate the **Dima Date - Persian Date** plugin.
-5. Go to **Settings > تاریخ شمسی** to customize the date format.
+- **نویسنده:** [R.Balvardi](mailto:r.balvardi@gmail.com)
+- **وب‌سایت:** [dimagroup.ir](https://dimagroup.ir)
 
 ---
 
-## ⚙️ Settings
+## 📁 نحوه نصب
 
-You can change the default date format under:
-> **Settings > تاریخ شمسی**
+### دستی:
+1. فایل `dima-date.zip` را دانلود کنید.
+2. در وردپرس بروید: **Plugins > Add New**
+3. روی **Upload Plugin** کلیک کنید و فایل زیپ را آپلود کنید.
+4. پلاگین را فعال کنید.
 
-Supported Format Keys:
-| Key | Description           | Example         |
-|-----|-----------------------|-----------------|
-| `Y` | 4-digit year          | `1402`          |
-| `y` | 2-digit year          | `02`            |
-| `F` | Full month name       | `دی`            |
-| `m` | 2-digit month         | `10`            |
-| `n` | Numeric month         | `10`            |
-| `l` | Full day name         | `دوشنبه`        |
-| `d` | 2-digit day           | `05`            |
-| `j` | Numeric day           | `5`             |
-
-Examples:
-- `Y/m/d` → `1402/10/05`
-- `l، j F Y` → `دوشنبه، 5 دی 1402`
-
----
-
-## 🧪 REST API Support
-
-When fetching posts via the REST API (`/wp-json/wp/v2/posts`), the `date` and `modified` fields will be automatically returned in Jalali format based on your selected date format.
-
-Example response:
-```json
-{
-  "date": "1402/10/05",
-  "modified": "1402/10/07"
-}
+### از طریق گیت‌هاب:
+```bash
+git clone https://github.com/balvardi/dima-date.git
 ```
 
----
-
-## 🧑‍💻 Developers
-
-Want to contribute or extend this plugin?
-
-### Hooks Available
-
-- `dima_date_jalali_format`: Modify the final Jalali date before output.
-  ```php
-  add_filter('dima_date_jalali_format', function($formatted_date) {
-      return '📅 ' . $formatted_date;
-  });
-  ```
-
-- `dima_date_format`: Change the date format dynamically.
-  ```php
-  add_filter('dima_date_format', function($format) {
-      return 'Y/m/d';
-  });
-  ```
+و پوشه `dima-date` را به `wp-content/plugins/` منتقل کنید.
 
 ---
 
-## 📜 License
+## ⚙️ تنظیمات
 
-This project is licensed under the [GNU General Public License v2.0](https://github.com/yourusername/dima-date/blob/main/LICENSE).
-
----
-
-## 💬 Feedback & Contributions
-
-Have a feature idea? Found a bug? Feel free to open an issue or submit a pull request!
-
-Contributions are always welcome 👏
+بعد از فعال‌سازی:
+- بروید به: **Settings > تاریخ شمسی**
+- قالب تاریخ دلخواه را تعیین کنید.  
+مثال:
+- `Y/m/d` → `1404/02/20`
+- `l، j F Y` → `جمعه، 20 اردیبهشت 1404`
+- `l، j F Y H:i` → `جمعه، 20 اردیبهشت 1404 13:45`
 
 ---
 
-## ❤️ Credits
+## 🧪 پشتیبانی از REST API
 
-This plugin uses a modified version of the [jDateTime](https://github.com/sallar/jDateTime) library for Jalali date conversion.
+وقتی پست‌ها را از طریق `/wp-json/wp/v2/posts` دریافت کنید، فیلدهای `date` و `modified` به صورت خودکار به تاریخ شمسی تبدیل می‌شوند.
+
+---
+
+## 📜 لایسنس
+
+این پروژه تحت لایسنس [GNU General Public License v2.0](https://github.com/balvardi/dima-date/blob/main/LICENSE) منتشر شده است.
+
+---
+
+## 💬 پشتیبانی و همکاری
+
+اگر باگی پیدا کردید یا پیشنهادی داشتید، حتماً Issue باز کنید یا Pull Request بفرستید.
+
+همچنین اگر سوالی داشتید، می‌توانید از طریق ایمیل تماس بگیرید:  
+📧 [r.balvardi@gmail.com](mailto:r.balvardi@gmail.com)
+
+---
+
+## ❤️ منابع
+
+این پلاگین از یک نسخه اصلاح شده از کتابخانه [jDateTime](https://github.com/sallar/jDateTime) برای تبدیل تاریخ استفاده می‌کند.
 ```
